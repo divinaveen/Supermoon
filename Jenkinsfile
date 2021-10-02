@@ -16,7 +16,7 @@ stages{
        steps{
          withCredentials([string(credentialsId: 'hubpass', variable: 'Hpas')]) {
          sh "docker login -u naveendivi -p ${Hpas}"
-         sh "docker push naveen/japp:${TAG}"
+         sh "docker push naveendivi/japp:${TAG}"
 }
 }
 

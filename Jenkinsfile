@@ -11,10 +11,19 @@ stages{
         }
 
        }
+    stage('PUsh Docker Image')
+       {
+       steps{
+         withCredentials([string(credentialsId: 'hubpass', variable: 'Hpas')]) {
+         sh "docker login -u naveendivi -p ${Hpas}"
+         sh "docker push naveen/japp:${TAG}"
+}
+}
+
 
       }
 }
-
+}
 
 def gittag() {
       def tag = sh script: 'git rev-parse HEAD', returnStdout: true
